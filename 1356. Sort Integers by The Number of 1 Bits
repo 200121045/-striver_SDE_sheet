@@ -1,0 +1,28 @@
+class Solution {
+public:
+/*count number of 1's in the binary number*/
+    int count_of_one(int num){
+        int count = 0;
+        while(num > 0){
+            num=num & num-1;
+            count++;
+        }
+        return count;
+    }  
+    vector<int> sortByBits(vector<int>& arr) {
+        sort(arr.begin(), arr.end());//pre-sort to make it->second also sorted. //O(nlogn)
+        multimap<int, int> m; 
+        int count;
+        vector<int> res;
+        for (int i = 0; i < arr.size(); i++){        //O(n)
+            count = count_of_one(arr[i]);            //O(no. of set bits)
+            m.insert({count, arr[i]});               //O(logn)  
+        }    
+        for (multimap<int, int>::iterator it = m.begin(); it != m.end(); it++){ //O(n)
+            res.push_back(it->second);
+        }
+        return res;    
+    }
+};
+
+//Total time complexity:O(n^2logn)

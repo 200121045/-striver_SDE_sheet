@@ -1,0 +1,32 @@
+class Solution {
+public:
+int find(ListNode *head){
+    ListNode*temp =head;
+    int cnt=1;
+    while(temp->next!=NULL){
+        cnt++;
+        temp= temp->next;
+
+    }
+    return cnt;
+}
+    ListNode* rotateRight(ListNode* head, int k) {
+       
+   if(head==NULL || head->next ==NULL)return head;
+     int len = find(head);
+         k =k%len;
+   while(k--){
+ListNode* curr = head;
+   ListNode*prev = NULL;
+       while(curr->next!=NULL){
+           prev = curr;
+           curr= curr->next;
+   }
+   curr->next= head;
+   prev->next = NULL;
+           head = curr;
+    }
+
+    return head;
+    }
+};

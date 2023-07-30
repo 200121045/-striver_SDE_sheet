@@ -1,0 +1,57 @@
+class CustomStack {
+public:
+stack<int>st;
+  int lol ;
+    CustomStack(int maxSize) {
+          lol = maxSize;
+    }
+    
+    void push(int x) {
+ 
+       if(st.size()<lol) {
+         st.push(x);
+       }
+    }
+    
+    int pop() {
+        if(st.size()!=0){
+        int p = st.top();
+        st.pop();
+        return p;
+        }
+        return -1;
+    }
+    /*
+1
+
+    
+    
+    */
+   void increment(int k, int val) {
+        stack<int> helper;
+        while(st.size() != 0){
+            int value =st.top();
+            st.pop();
+            helper.push(value);
+        }
+        int counter = 0;
+        while(helper.size() != 0){
+            if(counter < k){
+                int value = helper.top() + val;
+                helper.pop();
+                st.push(value);
+            }
+            else{
+                int value = helper.top();
+                helper.pop();
+                st.push(value);
+            }
+            counter++;
+        }
+        }
+
+        
+    
+};
+
+ 
